@@ -733,11 +733,12 @@ pub const fn serialize_runtime_api_info(id: [u8; 8], version: u32) -> [u8; RUNTI
 	r[5] = id[5];
 	r[6] = id[6];
 	r[7] = id[7];
+	r[8] = id[8];
 
-	r[8] = version[0];
-	r[9] = version[1];
-	r[10] = version[2];
-	r[11] = version[3];
+	r[9] = version[0];
+	r[10] = version[1];
+	r[11] = version[2];
+	r[12] = version[3];
 	r
 }
 
