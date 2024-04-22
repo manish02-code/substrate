@@ -721,26 +721,27 @@ pub trait RuntimeApiInfo {
 pub const RUNTIME_API_INFO_SIZE: usize = 12;
 
 /// Crude and simple way to serialize the `RuntimeApiInfo` into a bunch of bytes.
+/// Crude and simple way to serialize the `RuntimeApiInfo` into a bunch of bytes.
 pub const fn serialize_runtime_api_info(id: [u8; 8], version: u32) -> [u8; RUNTIME_API_INFO_SIZE] {
-	let version = version.to_le_bytes();
+    let version = version.to_le_bytes();
 
-	let mut r = [0; RUNTIME_API_INFO_SIZE];
-	r[0] = id[0];
-	r[1] = id[1];
-	r[2] = id[2];
-	r[3] = id[3];
-	r[4] = id[4];
-	r[5] = id[5];
-	r[6] = id[6];
-	r[7] = id[7];
-	r[8] = id[8];
+    let mut r = [0; RUNTIME_API_INFO_SIZE];
+    r[0] = id[0];
+    r[1] = id[1];
+    r[2] = id[2];
+    r[3] = id[3];
+    r[4] = id[4];
+    r[5] = id[5];
+    r[6] = id[6];
+    r[7] = id[7];
 
-	r[9] = version[0];
-	r[10] = version[1];
-	r[11] = version[2];
-	r[12] = version[3];
-	r
+    r[8] = version[0];
+    r[9] = version[1];
+    r[10] = version[2];
+    r[11] = version[3];
+    r
 }
+
 
 /// Deserialize the runtime API info serialized by [`serialize_runtime_api_info`].
 pub fn deserialize_runtime_api_info(bytes: [u8; RUNTIME_API_INFO_SIZE]) -> ([u8; 8], u32) {
